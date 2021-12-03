@@ -16,8 +16,15 @@ window.addEventListener('DOMContentLoaded', () => {
   function setInt(dir) {
     id = setInterval (dir, 5);
   }
-  function moveTop() {
+  function clearInt() {
+    if (posY === 450 || posY === 0) {
+      clearInterval(id);
+    }
+  }
+  function moveUp() {
     posY--;
+    sq.style.top = posY + 'px';
+    clearInt();
   }
   function moveRight() {
 
@@ -32,9 +39,11 @@ window.addEventListener('DOMContentLoaded', () => {
   function moveLeft() {}
   document.addEventListener('keydown', (e) => {    
     if (e.code == 'ArrowDown') {
-      console.log('start');
+      
       setInt(moveDown);
-    } else if (e.code)
+    } else if (e.code == 'ArrowUp') {
+      setInt(moveUp);
+    }
   });
   sq.addEventListener('click', () => {
     
