@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
   let dir;
   let id;
 
-  
+
   // function setInt() {
   //   pos++;
   //   sq.style.top = pos + 'px';
@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', () => {
   //   }
   // }
   function setInt(dir, t) {
-    id = setInterval (dir, t);
+    id = setInterval(dir, t);
   }
 
   function clearInt() {
@@ -29,47 +29,59 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+
   function moveUp() {
     dir = 'y';
     posY--;
     sq.style.top = posY + 'px';
     clearInt();
   }
+
   function moveRight() {
     dir = 'x';
     posX++;
     sq.style.left = posX + 'px';
     clearInt();
   }
+
   function moveDown() {
     dir = 'y';
     posY++;
     sq.style.top = posY + 'px';
     clearInt();
   }
+
   function moveLeft() {
     dir = 'x';
     posX--;
     sq.style.left = posX + 'px';
     clearInt();
   }
-  document.addEventListener('keydown', (e) => {    
+  document.addEventListener('keydown', (e) => {
     if (e.code == 'ArrowUp') {
-      clearInterval(id);
-      setInt(moveUp, 5);
+      if (posY !== 0) {
+        clearInterval(id);
+        setInt(moveUp, 5);
+      }
     } else if (e.code == 'ArrowRight') {
-      clearInterval(id);
-      setInt(moveRight, 5);
+      if (posX !== 450) {
+        clearInterval(id);
+        setInt(moveRight, 5);
+      }
     } else if (e.code == 'ArrowDown') {
-      clearInterval(id);
-      setInt(moveDown, 5);
+      if (posY !== 450) {
+        clearInterval(id);
+        setInt(moveDown, 5);
+      }
     } else if (e.code == 'ArrowLeft') {
-      clearInterval(id);
-      setInt(moveLeft, 5);
+      if (posX !== 0) {
+        clearInterval(id);
+        setInt(moveLeft, 5);
+      }
     }
   });
   sq.addEventListener('click', () => {
-    
+
   });
 
 
